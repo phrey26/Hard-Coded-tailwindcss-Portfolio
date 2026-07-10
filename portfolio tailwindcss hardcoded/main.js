@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
  
-    
     const revealElements = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -29,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
  
     revealElements.forEach(element => revealObserver.observe(element));
- 
  
     //Home Page
     const typingTarget = document.getElementById('typing-text');
@@ -64,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         setTimeout(type, 500);
     }
- 
  
     //Projects
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -120,12 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const oscillator = audioCtx.createOscillator();
         const gainNode = audioCtx.createGain();
         
-        
         oscillator.type = 'square';
         oscillator.frequency.setValueAtTime(400, audioCtx.currentTime); 
         oscillator.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.03); 
         
-       
         gainNode.gain.setValueAtTime(0.02, audioCtx.currentTime); 
         gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
         
@@ -141,5 +136,32 @@ document.addEventListener('DOMContentLoaded', () => {
     navItems.forEach(item => {
         item.addEventListener('mouseenter', playHoverBlip);
     });
+
+    //smart scroll
+    const header = document.querySelector('header');
+    
+    if (header) {
+        header.style.transition = 'top 0.4s ease-in-out';
+        
+        let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop <= 0) {
+                header.style.top = '1.5rem';
+                lastScrollTop = scrollTop;
+                return;
+            }
+            
+            if (scrollTop > lastScrollTop && scrollTop > 80) {
+                header.style.top = '-150px'; 
+            } else {
+                header.style.top = '1.5rem'; // 1.5rem equals top-6
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+    }
  
 });

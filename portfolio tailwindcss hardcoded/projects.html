@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SYS.MERCER | Projects</title>
+    <title>SYS.HUET | Projects</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
         @theme { --color-darkbg: #0a0a0a; --color-cardbg: #171717; --color-accent: #b45309; --color-secondary: #a3a3a3; }
@@ -15,7 +15,7 @@
     </style>
 </head>
 <body class="bg-darkbg text-neutral-200 min-h-screen flex flex-col justify-between">
-
+ 
     <header class="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50">
         <nav class="relative bg-neutral-950/90 backdrop-blur-md border border-neutral-700 p-2 rounded-sm flex justify-between items-center shadow-2xl overflow-hidden">
             <div class="absolute inset-0 pointer-events-none opacity-20 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:100%_4px]"></div>
@@ -25,7 +25,7 @@
             <div class="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-accent"></div>
             <div class="px-4 flex items-center gap-3 relative z-10">
                 <div class="w-3 h-3 bg-accent animate-pulse shadow-[0_0_10px_#b45309]"></div>
-                <a href="index.html" class="text-xl font-black tracking-widest text-neutral-300 font-mono uppercase">SYS<span class="text-accent">.MERCER</span></a>
+                <a href="index.html" class="text-xl font-black tracking-widest text-neutral-300 font-mono uppercase">SYS<span class="text-accent">.HUET</span></a>
             </div>
             <ul class="hidden md:flex font-mono text-xs font-bold tracking-[0.2em] uppercase relative z-10">
                 <li><a href="index.html" class="nav-item relative flex items-center h-12 px-6 bg-transparent text-neutral-400 border-r border-neutral-800 hover:bg-neutral-800 hover:text-white transition-all duration-200 active:scale-95 group"><span class="text-accent opacity-0 group-hover:opacity-100 transition-all mr-0 group-hover:mr-3 -ml-3 group-hover:ml-0 duration-200">►</span><span>Home</span></a></li>
@@ -33,7 +33,7 @@
                 <li><a href="projects.html" class="nav-item relative flex items-center h-12 px-6 bg-accent text-neutral-950 border-r border-neutral-950 transition-all active:scale-95 shadow-[inset_0_0_15px_rgba(0,0,0,0.4)]"><span class="text-neutral-950 animate-pulse mr-3">►</span><span>Projects</span></a></li>
                 <li><a href="contact.html" class="nav-item relative flex items-center h-12 px-6 bg-transparent text-neutral-400 hover:bg-neutral-800 hover:text-white transition-all duration-200 active:scale-95 group"><span class="text-accent opacity-0 group-hover:opacity-100 transition-all mr-0 group-hover:mr-3 -ml-3 group-hover:ml-0 duration-200">►</span><span>Contact</span></a></li>
             </ul>
-            <button id="menu-btn" class="md:hidden px-4 text-xl focus:outline-none text-accent active:scale-90 transition-transform relative z-10"><i class="fa-solid fa-gamepad" id="menu-icon"></i></button>
+            <button id="menu-btn" class="md:hidden px-4 text-xl focus:outline-none text-accent active:scale-90 transition-transform relative z-10"><i class="fa-solid fa-terminal" id="menu-icon"></i></button>
         </nav>
         <div id="mobile-menu" class="hidden md:hidden mt-2 bg-neutral-950 border border-neutral-700 p-2 rounded-sm shadow-2xl relative overflow-hidden">
             <div class="absolute inset-0 pointer-events-none opacity-20 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:100%_4px]"></div>
@@ -45,59 +45,180 @@
             </ul>
         </div>
     </header>
-
-    <main class="flex-grow pt-36 pb-16 px-6 max-w-7xl mx-auto w-full">
-        <div class="text-center mb-12 reveal">
-            <h2 class="text-3xl md:text-5xl font-extrabold tracking-widest uppercase font-mono mb-4 text-white">Archives</h2>
+ 
+    <main class="flex-grow pt-36 pb-16 px-6 max-w-5xl mx-auto w-full">
+ 
+        <!-- PAGE HEADER -->
+        <section class="text-center mb-16 reveal">
+            <p class="font-mono text-xs tracking-[0.3em] uppercase text-accent mb-3">// Deployed Subsystems</p>
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight font-mono uppercase mb-4 text-white">Project.Archives</h2>
             <p class="text-neutral-400 max-w-xl mx-auto font-mono text-sm">> Querying deployed subsystems...</p>
-        </div>
-
-        <div class="flex justify-center space-x-4 mb-12 reveal font-mono">
-            <button class="filter-btn px-5 py-2 rounded-sm text-xs font-bold uppercase tracking-wider transition border border-accent bg-accent text-neutral-950 shadow-[0_0_10px_rgba(180,83,9,0.3)]" data-filter="all">All Logs</button>
-            <button class="filter-btn px-5 py-2 rounded-sm text-xs font-bold uppercase tracking-wider transition bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-500" data-filter="architecture">Core</button>
-            <button class="filter-btn px-5 py-2 rounded-sm text-xs font-bold uppercase tracking-wider transition bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-500" data-filter="ui">Interface</button>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="project-card bg-cardbg rounded-sm overflow-hidden border border-neutral-800 hover:border-accent hover:shadow-[0_0_15px_rgba(180,83,9,0.1)] transition-all duration-300 flex flex-col justify-between group reveal" data-category="architecture">
-                <div class="p-6">
-                    <div class="h-40 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100%_4px] bg-neutral-900 rounded-sm border border-neutral-800 flex items-center justify-center mb-6 overflow-hidden relative">
-                        <i class="fa-solid fa-server text-4xl text-accent group-hover:scale-110 transition duration-500"></i>
+        </section>
+ 
+        <!-- FILTERS -->
+        <section class="flex justify-center flex-wrap gap-3 mb-16 reveal font-mono">
+            <button class="filter-btn px-5 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition border border-accent bg-accent text-neutral-950 shadow-[0_0_10px_rgba(180,83,9,0.3)] active:scale-95" data-filter="all">All Logs</button>
+            <button class="filter-btn px-5 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-500 active:scale-95" data-filter="apps">Apps</button>
+            <button class="filter-btn px-5 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-500 active:scale-95" data-filter="games">Video Games</button>
+            <button class="filter-btn px-5 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-500 active:scale-95" data-filter="websites">Websites</button>
+            <button class="filter-btn px-5 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-500 active:scale-95" data-filter="designs">Designs</button>
+        </section>
+ 
+        <!-- PROJECT GRID -->
+        <section class="mb-24">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+ 
+                <div class="project-card group relative bg-cardbg border border-neutral-800 hover:border-accent rounded-sm p-6 flex flex-col transition-all duration-300 active:scale-95 reveal" data-category="apps">
+                    <div class="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-neutral-700 group-hover:border-accent transition-colors"></div>
+                    <div class="relative w-full aspect-video mb-4 border border-dashed border-neutral-700 group-hover:border-neutral-600 bg-neutral-900/60 rounded-sm flex flex-col items-center justify-center gap-2 overflow-hidden transition-colors">
+                        <div class="absolute inset-0 pointer-events-none opacity-15 bg-[linear-gradient(rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:100%_4px]"></div>
+                        <i class="fa-solid fa-server text-xl text-neutral-600 group-hover:text-accent transition-colors"></i>
+                        <span class="font-mono text-[9px] uppercase tracking-widest text-neutral-600">nexus_pipeline.png</span>
                     </div>
-                    <span class="text-xs font-mono text-accent font-bold uppercase tracking-widest">> Core</span>
-                    <h3 class="text-xl font-bold mt-1 text-white group-hover:text-accent transition duration-300">Nexus Data Pipeline</h3>
-                    <p class="text-sm text-neutral-400 mt-2 line-clamp-3">A robust data processing dashboard designed for high-volume financial analytics, ensuring zero-latency data rendering.</p>
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-accent mb-3">> Apps</span>
+                    <h3 class="text-lg font-bold text-white mb-2">Nexus Data Pipeline</h3>
+                    <p class="text-neutral-500 text-sm leading-relaxed mb-4">
+                        A robust data processing dashboard designed for high-volume financial
+                        analytics, ensuring zero-latency data rendering.
+                    </p>
+                    <span class="mt-auto font-mono text-xs text-neutral-500 group-hover:text-white transition-colors">React.js · Node.js · SQL</span>
                 </div>
-            </div>
-
-            <div class="project-card bg-cardbg rounded-sm overflow-hidden border border-neutral-800 hover:border-neutral-400 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)] transition-all duration-300 flex flex-col justify-between group reveal" data-category="ui">
-                <div class="p-6">
-                    <div class="h-40 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100%_4px] bg-neutral-900 rounded-sm border border-neutral-800 flex items-center justify-center mb-6 overflow-hidden relative">
-                        <i class="fa-solid fa-layer-group text-4xl text-neutral-300 group-hover:scale-110 transition duration-500"></i>
+ 
+                <div class="project-card group relative bg-cardbg border border-neutral-800 hover:border-accent rounded-sm p-6 flex flex-col transition-all duration-300 active:scale-95 reveal" data-category="websites">
+                    <div class="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-neutral-700 group-hover:border-accent transition-colors"></div>
+                    <div class="relative w-full aspect-video mb-4 border border-dashed border-neutral-700 group-hover:border-neutral-600 bg-neutral-900/60 rounded-sm flex flex-col items-center justify-center gap-2 overflow-hidden transition-colors">
+                        <div class="absolute inset-0 pointer-events-none opacity-15 bg-[linear-gradient(rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:100%_4px]"></div>
+                        <i class="fa-solid fa-layer-group text-xl text-neutral-600 group-hover:text-accent transition-colors"></i>
+                        <span class="font-mono text-[9px] uppercase tracking-widest text-neutral-600">equinox_suite.png</span>
                     </div>
-                    <span class="text-xs font-mono text-neutral-300 font-bold uppercase tracking-widest">> Interface</span>
-                    <h3 class="text-xl font-bold mt-1 text-white group-hover:text-neutral-300 transition duration-300">Equinox Admin Suite</h3>
-                    <p class="text-sm text-neutral-400 mt-2 line-clamp-3">A clean, monochromatic administrative framework utilizing strict spacing systems to minimize user fatigue during prolonged use.</p>
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-accent mb-3">> Websites</span>
+                    <h3 class="text-lg font-bold text-white mb-2">Equinox Admin Suite</h3>
+                    <p class="text-neutral-500 text-sm leading-relaxed mb-4">
+                        A clean, monochromatic administrative framework utilizing strict spacing
+                        systems to minimize user fatigue during prolonged use.
+                    </p>
+                    <span class="mt-auto font-mono text-xs text-neutral-500 group-hover:text-white transition-colors">Vue.js · Firebase · Figma</span>
                 </div>
-            </div>
-
-            <div class="project-card bg-cardbg rounded-sm overflow-hidden border border-neutral-800 hover:border-stone-400 hover:shadow-[0_0_15px_rgba(168,162,158,0.1)] transition-all duration-300 flex flex-col justify-between group reveal" data-category="architecture">
-                <div class="p-6">
-                    <div class="h-40 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100%_4px] bg-neutral-900 rounded-sm border border-neutral-800 flex items-center justify-center mb-6 overflow-hidden relative">
-                        <i class="fa-solid fa-network-wired text-4xl text-stone-400 group-hover:scale-110 transition duration-500"></i>
+ 
+                <div class="project-card group relative bg-cardbg border border-neutral-800 hover:border-accent rounded-sm p-6 flex flex-col transition-all duration-300 active:scale-95 reveal" data-category="apps">
+                    <div class="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-neutral-700 group-hover:border-accent transition-colors"></div>
+                    <div class="relative w-full aspect-video mb-4 border border-dashed border-neutral-700 group-hover:border-neutral-600 bg-neutral-900/60 rounded-sm flex flex-col items-center justify-center gap-2 overflow-hidden transition-colors">
+                        <div class="absolute inset-0 pointer-events-none opacity-15 bg-[linear-gradient(rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:100%_4px]"></div>
+                        <i class="fa-solid fa-network-wired text-xl text-neutral-600 group-hover:text-accent transition-colors"></i>
+                        <span class="font-mono text-[9px] uppercase tracking-widest text-neutral-600">vanguard_gateway.png</span>
                     </div>
-                    <span class="text-xs font-mono text-stone-400 font-bold uppercase tracking-widest">> Core</span>
-                    <h3 class="text-xl font-bold mt-1 text-white group-hover:text-stone-300 transition duration-300">Vanguard Gateway</h3>
-                    <p class="text-sm text-neutral-400 mt-2 line-clamp-3">Middleware management console allowing system administrators to visualize throughput and flag operational bottlenecks instantly.</p>
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-accent mb-3">> Apps</span>
+                    <h3 class="text-lg font-bold text-white mb-2">Vanguard Gateway</h3>
+                    <p class="text-neutral-500 text-sm leading-relaxed mb-4">
+                        Middleware management console allowing system administrators to
+                        visualize throughput and flag operational bottlenecks instantly.
+                    </p>
+                    <span class="mt-auto font-mono text-xs text-neutral-500 group-hover:text-white transition-colors">Node.js · MongoDB · SQL</span>
                 </div>
+ 
+                <a href="index.html#projects" class="project-card group relative bg-cardbg border border-neutral-800 hover:border-accent rounded-sm p-6 flex flex-col transition-all duration-300 active:scale-95 reveal" data-category="games">
+                    <div class="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-neutral-700 group-hover:border-accent transition-colors"></div>
+                    <div class="relative w-full aspect-video mb-4 border border-dashed border-neutral-700 group-hover:border-neutral-600 bg-neutral-900/60 rounded-sm flex flex-col items-center justify-center gap-2 overflow-hidden transition-colors">
+                        <div class="absolute inset-0 pointer-events-none opacity-15 bg-[linear-gradient(rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:100%_4px]"></div>
+                        <i class="fa-solid fa-image text-xl text-neutral-600"></i>
+                        <span class="font-mono text-[9px] uppercase tracking-widest text-neutral-600">hard_hat_hustle.png</span>
+                    </div>
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-accent mb-3">> Video Games</span>
+                    <h3 class="text-lg font-bold text-white mb-2">Hard Hat Hustle</h3>
+                    <p class="text-neutral-500 text-sm leading-relaxed mb-4">
+                        A browser-based platformer built from scratch, refactored into clean
+                        HTML/CSS/JS and packaged for speedrunners to pick up and play.
+                    </p>
+                    <span class="mt-auto font-mono text-xs text-neutral-500 group-hover:text-white transition-colors">HTML5 · CSS3 · JavaScript</span>
+                </a>
+ 
+                <div class="project-card group relative bg-cardbg border border-neutral-800 hover:border-accent rounded-sm p-6 flex flex-col transition-all duration-300 active:scale-95 reveal" data-category="games">
+                    <div class="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-neutral-700 group-hover:border-accent transition-colors"></div>
+                    <div class="relative w-full aspect-video mb-4 border border-dashed border-neutral-700 group-hover:border-neutral-600 bg-neutral-900/60 rounded-sm flex flex-col items-center justify-center gap-2 overflow-hidden transition-colors">
+                        <div class="absolute inset-0 pointer-events-none opacity-15 bg-[linear-gradient(rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:100%_4px]"></div>
+                        <i class="fa-solid fa-image text-xl text-neutral-600"></i>
+                        <span class="font-mono text-[9px] uppercase tracking-widest text-neutral-600">game_modding.png</span>
+                    </div>
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-accent mb-3">> Video Games</span>
+                    <h3 class="text-lg font-bold text-white mb-2">Indie Game Modding</h3>
+                    <p class="text-neutral-500 text-sm leading-relaxed mb-4">
+                        Freelance feature implementation and custom PC game modifications for
+                        indie and fan-made projects, built on solid programming logic.
+                    </p>
+                    <span class="mt-auto font-mono text-xs text-neutral-500 group-hover:text-white transition-colors">C# · Modding SDKs · Scripting</span>
+                </div>
+ 
+                <div class="project-card group relative bg-cardbg border border-neutral-800 hover:border-accent rounded-sm p-6 flex flex-col transition-all duration-300 active:scale-95 reveal" data-category="designs">
+                    <div class="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-neutral-700 group-hover:border-accent transition-colors"></div>
+                    <div class="relative w-full aspect-video mb-4 border border-dashed border-neutral-700 group-hover:border-neutral-600 bg-neutral-900/60 rounded-sm flex flex-col items-center justify-center gap-2 overflow-hidden transition-colors">
+                        <div class="absolute inset-0 pointer-events-none opacity-15 bg-[linear-gradient(rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:100%_4px]"></div>
+                        <i class="fa-solid fa-image text-xl text-neutral-600"></i>
+                        <span class="font-mono text-[9px] uppercase tracking-widest text-neutral-600">digital_content.png</span>
+                    </div>
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-accent mb-3">> Designs</span>
+                    <h3 class="text-lg font-bold text-white mb-2">Digital Content Studio</h3>
+                    <p class="text-neutral-500 text-sm leading-relaxed mb-4">
+                        Freelance thumbnail design, video editing, and digital artwork for
+                        clients through Raket.ph — from brief to final delivery.
+                    </p>
+                    <span class="mt-auto font-mono text-xs text-neutral-500 group-hover:text-white transition-colors">Figma · Blender · Aseprite</span>
+                </div>
+ 
             </div>
-        </div>
+        </section>
+ 
+        <!-- CTA -->
+        <section class="mb-8 reveal">
+            <div class="relative bg-gradient-to-r from-neutral-950 via-neutral-900 to-neutral-950 border border-neutral-800 rounded-sm p-10 md:p-14 text-center overflow-hidden">
+                <div class="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:100%_4px]"></div>
+                <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-accent"></div>
+                <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-accent"></div>
+                <h2 class="text-2xl md:text-4xl font-bold text-white mb-4 relative z-10">Got a system in mind?</h2>
+                <p class="text-neutral-400 font-mono text-sm mb-8 relative z-10">Let's spin up something fast, functional, and worth deploying.</p>
+                <a href="contact.html" class="relative z-10 inline-block px-8 py-3 bg-accent hover:bg-amber-800 text-white font-bold font-mono tracking-widest uppercase rounded-sm shadow-[0_0_15px_rgba(180,83,9,0.4)] transition-all duration-300 transform hover:scale-105 active:scale-95 border border-accent">
+                    Establish Link <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                </a>
+            </div>
+        </section>
+ 
     </main>
-
-    <footer class="border-t border-neutral-900 bg-darkbg/40 py-6 text-center text-sm font-mono text-neutral-600 uppercase tracking-widest">
-        <p>SYS.MERCER // V.2026 // ONLINE</p>
+ 
+    <footer class="border-t border-neutral-900 bg-darkbg/60 pt-12 pb-6 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:100%_4px]"></div>
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="grid sm:grid-cols-3 gap-10 mb-10">
+                <div>
+                    <a href="index.html" class="text-lg font-black tracking-widest text-neutral-300 font-mono uppercase">SYS<span class="text-accent">.HUET</span></a>
+                    <p class="text-neutral-500 text-sm mt-3 leading-relaxed">
+                        Web developer based in Tarlac, Philippines, building responsive sites,
+                        web apps, and the occasional game mod.
+                    </p>
+                </div>
+                <div>
+                    <p class="font-mono text-xs uppercase tracking-widest text-accent mb-4">Navigate</p>
+                    <ul class="space-y-2 font-mono text-xs uppercase tracking-widest text-neutral-500">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="projects.html" class="hover:text-white transition-colors">Projects</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-mono text-xs uppercase tracking-widest text-accent mb-4">Connect</p>
+                    <ul class="space-y-2 font-mono text-xs uppercase tracking-widest text-neutral-500">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-accent text-[10px]"></i> humphreyhuet26@gmail.com</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-accent text-[10px]"></i> 0948-840-0403</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-accent text-[10px]"></i> Tarlac, Philippines</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-6 border-t border-neutral-900 flex flex-col sm:flex-row justify-between items-center gap-2">
+                <p class="text-neutral-600 text-xs font-mono tracking-widest uppercase text-center">© 2026 Sir Humphrey Huey M. Huet. All Rights Reserved.</p>
+                <p class="text-neutral-700 text-xs font-mono tracking-widest uppercase">SYS.HUET // V.2026 // ONLINE</p>
+            </div>
+        </div>
     </footer>
-
+ 
     <script src="main.js"></script>
 </body>
 </html>

@@ -101,42 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
  
-    //UI
-    let audioCtx;
- 
-    // audio on first user interaction to bypass browser autoplay blocks
-    document.body.addEventListener('click', () => {
-        if (!audioCtx) {
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        }
-    }, { once: true });
- 
-    function playHoverBlip() {
-        if (!audioCtx || audioCtx.state === 'suspended') return;
-        
-        const oscillator = audioCtx.createOscillator();
-        const gainNode = audioCtx.createGain();
-        
-        oscillator.type = 'square';
-        oscillator.frequency.setValueAtTime(400, audioCtx.currentTime); 
-        oscillator.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.03); 
-        
-        gainNode.gain.setValueAtTime(0.02, audioCtx.currentTime); 
-        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
-        
-        oscillator.connect(gainNode);
-        gainNode.connect(audioCtx.destination);
-        
-        oscillator.start();
-        oscillator.stop(audioCtx.currentTime + 0.03);
-    }
- 
-    // sound effect to all navigation items and buttons
-    const navItems = document.querySelectorAll('.nav-item, .filter-btn');
-    navItems.forEach(item => {
-        item.addEventListener('mouseenter', playHoverBlip);
-    });
-
     //smart scroll
     const header = document.querySelector('header');
     

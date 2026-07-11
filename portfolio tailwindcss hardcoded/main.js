@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuBtn && mobileMenu) {
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            // Animate Terminal icon to X icon state for HUD
             if (mobileMenu.classList.contains('hidden')) {
                 menuIcon.className = 'fa-solid fa-terminal transition-transform duration-300';
             } else {
@@ -62,7 +61,53 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         setTimeout(type, 500);
     }
+
+    // Loading dots
+    const loadingDotsElements = document.querySelectorAll('.loading-dots');
+    if (loadingDotsElements.length > 0) {
+        loadingDotsElements.forEach(el => {
+            let dotCount = 0;
+            setInterval(() => {
+                dotCount = (dotCount + 1) % 4;
+                el.textContent = '.'.repeat(dotCount);
+            }, 400);
+        });
+    }
  
+    // Mail button
+    const mailScrollBtn = document.getElementById('mail-scroll-btn');
+    const nameInput = document.getElementById('name-input');
+    const mailTriggers = document.querySelectorAll('.mail-scroll-trigger');
+
+    function focusContactForm() {
+        if (!nameInput) return;
+        nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => nameInput.focus(), 500);
+    }
+
+    if (mailScrollBtn && nameInput) {
+        mailScrollBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            focusContactForm();
+        });
+    }
+
+    if (mailTriggers.length > 0) {
+        mailTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                if (nameInput) {
+                    e.preventDefault();
+                    focusContactForm();
+                }
+            });
+        });
+    }
+
+    // footer mail link
+    if (window.location.hash === '#contact-form' && nameInput) {
+        setTimeout(focusContactForm, 300);
+    }
+
     //Projects
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
@@ -121,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (scrollTop > lastScrollTop && scrollTop > 80) {
                 header.style.top = '-150px'; 
             } else {
-                header.style.top = '1.5rem'; // 1.5rem equals top-6
+                header.style.top = '1.5rem';
             }
             
             lastScrollTop = scrollTop;

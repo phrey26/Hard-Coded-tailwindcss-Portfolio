@@ -12,6 +12,9 @@
     <style>
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
+        .cv-scroll::-webkit-scrollbar { width: 6px; }
+        .cv-scroll::-webkit-scrollbar-track { background: #0a0a0a; }
+        .cv-scroll::-webkit-scrollbar-thumb { background: #b45309; border-radius: 2px; }
     </style>
 </head>
 <body class="bg-darkbg text-neutral-200 min-h-screen flex flex-col justify-between">
@@ -33,7 +36,7 @@
                 <li><a href="projects.html" class="nav-item relative flex items-center h-12 px-6 bg-transparent text-neutral-400 border-r border-neutral-800 hover:bg-neutral-800 hover:text-white transition-all duration-200 active:scale-95 group"><span class="text-accent opacity-0 group-hover:opacity-100 transition-all mr-0 group-hover:mr-3 -ml-3 group-hover:ml-0 duration-200">►</span><span>Projects</span></a></li>
                 <li><a href="contact.html" class="nav-item relative flex items-center h-12 px-6 bg-accent text-neutral-950 border-r border-neutral-950 transition-all active:scale-95 shadow-[inset_0_0_15px_rgba(0,0,0,0.4)]"><span class="text-neutral-950 animate-pulse mr-3">►</span><span>Contact</span></a></li>
             </ul>
-            <button id="menu-btn" class="md:hidden px-4 text-xl focus:outline-none text-accent active:scale-90 transition-transform relative z-10"><i class="fa-solid fa-terminal" id="menu-icon"></i></button>
+            <button id="menu-btn" class="md:hidden flex items-center gap-2 px-4 py-2.5 rounded-sm font-mono text-xs font-bold uppercase tracking-widest bg-accent/10 border border-accent text-accent focus:outline-none active:scale-90 transition-all duration-200 relative z-10 shadow-[0_0_10px_rgba(180,83,9,0.3)]"><i class="fa-solid fa-terminal" id="menu-icon"></i><span id="menu-label">Menu</span></button>
         </nav>
         <div id="mobile-menu" class="hidden md:hidden mt-2 bg-neutral-950 border border-neutral-700 p-2 rounded-sm shadow-2xl relative overflow-hidden">
             <div class="absolute inset-0 pointer-events-none opacity-20 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:100%_4px]"></div>
@@ -84,44 +87,101 @@
                         <span class="ml-3 font-mono text-[10px] text-neutral-500 uppercase tracking-widest">transmit.sh</span>
                     </div>
                     <form id="contact-form" class="p-6 space-y-4">
+                        <input type="hidden" name="access_key" value="07835b0a-cb82-4691-b939-e59f367ceff8">
+                        <input type="hidden" name="subject" value="New Transmission // SYS.HUET Contact Form">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display:none">
                         <div>
                             <label class="block text-xs font-mono tracking-widest font-bold text-accent mb-2">> Identity</label>
-                            <input type="text" id="name-input" class="w-full bg-neutral-950 border border-neutral-700 focus:border-accent rounded-sm p-3 text-sm focus:outline-none transition-colors text-white font-mono placeholder:text-neutral-700" placeholder="ENTER NAME_">
+                            <input type="text" id="name-input" name="name" required class="w-full bg-neutral-950 border border-neutral-700 focus:border-accent rounded-sm p-3 text-sm focus:outline-none transition-colors text-white font-mono placeholder:text-neutral-700" placeholder="ENTER NAME_">
                         </div>
                         <div>
                             <label class="block text-xs font-mono tracking-widest font-bold text-accent mb-2">> Return.Address</label>
-                            <input type="email" class="w-full bg-neutral-950 border border-neutral-700 focus:border-accent rounded-sm p-3 text-sm focus:outline-none transition-colors text-white font-mono placeholder:text-neutral-700" placeholder="ENTER EMAIL_">
+                            <input type="email" id="email-input" name="email" required class="w-full bg-neutral-950 border border-neutral-700 focus:border-accent rounded-sm p-3 text-sm focus:outline-none transition-colors text-white font-mono placeholder:text-neutral-700" placeholder="ENTER EMAIL_">
                         </div>
                         <div>
                             <label class="block text-xs font-mono tracking-widest font-bold text-accent mb-2">> Payload</label>
-                            <textarea rows="4" class="w-full bg-neutral-950 border border-neutral-700 focus:border-accent rounded-sm p-3 text-sm focus:outline-none transition-colors text-white font-mono placeholder:text-neutral-700" placeholder="TRANSMIT DATA..."></textarea>
+                            <textarea rows="4" id="message-input" name="message" required class="w-full bg-neutral-950 border border-neutral-700 focus:border-accent rounded-sm p-3 text-sm focus:outline-none transition-colors text-white font-mono placeholder:text-neutral-700" placeholder="TRANSMIT DATA..."></textarea>
                         </div>
-                        <button type="submit" class="w-full py-3 bg-accent hover:bg-amber-800 text-neutral-950 font-bold font-mono uppercase tracking-[0.2em] rounded-sm transition duration-300 border border-accent shadow-[0_0_15px_rgba(180,83,9,0.3)] active:scale-95">
+                        <div>
+                            <label class="block text-xs font-mono tracking-widest font-bold text-accent mb-2">> Human.Verify</label>
+                            <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
+                        </div>
+                        <button type="submit" id="contact-submit-btn" class="w-full py-3 bg-accent hover:bg-amber-800 text-neutral-950 font-bold font-mono uppercase tracking-[0.2em] rounded-sm transition duration-300 border border-accent shadow-[0_0_15px_rgba(180,83,9,0.3)] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">
                             Send Message
                         </button>
+                        <p id="form-status" class="text-xs font-mono tracking-widest text-center hidden"></p>
                     </form>
                 </div>
             </div>
  
-            <div class="space-y-4 reveal lg:mt-0 mt-12 hidden md:block">
+            <div class="space-y-4 reveal lg:mt-0 mt-12">
                 <div class="relative bg-cardbg border border-neutral-800 rounded-sm overflow-hidden shadow-2xl">
                     <div class="flex items-center gap-2 px-4 py-3 border-b border-neutral-800 bg-neutral-950/60">
                         <span class="w-3 h-3 rounded-full bg-red-500/70"></span>
                         <span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
                         <span class="w-3 h-3 rounded-full bg-green-500/70"></span>
-                        <span class="ml-3 font-mono text-[10px] text-neutral-500 uppercase tracking-widest">resume.pdf</span>
-                        <a href="assets/Resume.pdf" target="_blank" rel="noopener" class="ml-auto text-neutral-500 hover:text-accent transition-colors" title="Open in new tab">
-                            <i class="fa-solid fa-up-right-from-square text-xs"></i>
-                        </a>
+                        <span class="ml-3 font-mono text-[10px] text-neutral-500 uppercase tracking-widest">cv_huet.txt</span>
+                        <span class="ml-auto font-mono text-[9px] text-neutral-600 uppercase tracking-widest border border-neutral-800 px-1.5 py-0.5 rounded-sm">read-only</span>
                     </div>
-                    <div class="relative w-full aspect-[1/1.4] bg-[#f8f9fa]">
-                        <iframe
-                            src="assets/Resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
-                            title="Humphrey Huet Resume Preview"
-                            class="w-full h-full border-0"
-                            loading="lazy">
-                        </iframe>
-                        <a href="assets/Resume.pdf" target="_blank" rel="noopener" class="absolute inset-0 z-10" aria-label="Open resume in new tab"></a>
+                    <div class="cv-scroll relative h-[420px] overflow-y-auto p-5 [scrollbar-width:thin]">
+                        <pre class="font-mono text-[11px] leading-relaxed text-neutral-400 whitespace-pre-wrap">$ cat cv_huet.txt
+────────────────────────────────────
+<span class="text-white font-bold">SIR HUMPHREY HUEY M. HUET</span>
+<span class="text-accent">Web Developer · Software Developer · Game Developer · Game Designer · Data Analyst</span>
+────────────────────────────────────
+
+<span class="text-accent">> SUMMARY</span>
+Information Technology professional focused on web
+development, with working knowledge of software
+engineering, game development, game design, and data
+analytics. Experienced across the full development
+lifecycle, from requirements and UI/UX design through
+implementation, testing, and deployment.
+
+<span class="text-accent">> SKILLS</span>
+JavaScript (ES6+) ................. 90%
+HTML5 & CSS3 ....................... 92%
+React.js / Vue.js .................. 85%
+Node.js / Angular / Flutter ........ 75%
+SQL / NoSQL / Firebase / MongoDB ... 80%
+Design Tools (Figma, Blender, ASE) . 78%
+
+<span class="text-accent">> SOFT SKILLS</span>
+Adaptability · Communication · Hard Working
+Work Ethic · Team Work · Emotional Intelligence
+
+<span class="text-accent">> EDUCATION</span>
+2022 — Present
+  BS Information Technology
+  Holy Angel University · Web Development Specialization
+
+<span class="text-accent">> EXPERIENCE</span>
+2024 — 2025
+  Freelance Digital Creator · Self-Employed (Raket.ph)
+  - Created and sold digital products via Raket.ph
+  - Delivered thumbnail design, video editing & digital art
+  - Managed client relationships and project delivery
+
+2024 — 2025
+  Freelance Game Programmer & Modder · Self-Employed
+  - Implemented features for indie/fan-made game projects
+  - Built custom PC game modifications
+  - Applied multi-language programming to game solutions
+
+<span class="text-accent">> CERTIFICATIONS</span>
+AWS Academy Graduate - Cloud Foundations, AWS, 2026
+Endpoint Security, Cisco, 2025
+Google Analytics Certification, Skillshop, 2026
+Looker Studio Essentials, Google, 2026
+Manage GA4 Data & Read Reports, Skillshop, 2026
+Use GA4 with Other Tools & Data, Skillshop, 2026
+Dive Deeper into GA4 Data & Reports, Skillshop, 2026
+HubSpot SEO, HubSpot Academy, 2026
+HubSpot SEO II, HubSpot Academy, 2026
+
+────────────────────────────────────
+[EOF] // Contact details redacted.
+Use the secure transmission form to reach out.<span class="animate-pulse text-accent">_</span></pre>
                     </div>
                 </div>
                 <a href="assets/Resume.pdf" download class="flex items-center justify-center gap-2 w-full py-3 bg-neutral-900 border border-neutral-800 hover:border-accent text-neutral-400 hover:text-white font-mono text-xs uppercase tracking-widest rounded-sm transition-colors active:scale-95">
@@ -154,7 +214,7 @@
                 <div>
                     <p class="font-mono text-xs uppercase tracking-widest text-accent mb-4">Connect</p>
                     <ul class="space-y-2 font-mono text-xs uppercase tracking-widest text-neutral-500">
-                        <li class="flex items-center lowercase gap-2"><a href="#contact-form" class="mail-scroll-trigger flex items-center gap-2 hover:text-white transition-colors"><i class="fa-solid fa-envelope text-accent text-[10px]"></i> humphreyhuet26@gmail.com</a></li>
+                        <li class="flex items-center gap-2"><a href="#contact-form" class="mail-scroll-trigger flex items-center gap-2 hover:text-white transition-colors"><i class="fa-solid fa-envelope text-accent text-[10px]"></i> EMAIL</a></li>
                         <li class="flex items-center gap-2"><a href="https://github.com/phrey26" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-white transition-colors"><i class="fa-brands fa-github text-accent text-[10px]"></i> GitHub</a></li>
                         <li class="flex items-center gap-2"><a href="https://www.linkedin.com/in/sir-humphrey-huey-huet-89b8993b8/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-white transition-colors"><i class="fa-brands fa-linkedin text-accent text-[10px]"></i> LinkedIn</a></li>
                     </ul>
@@ -168,5 +228,6 @@
     </footer>
  
     <script src="main.js"></script>
+    <script src="https://web3forms.com/client/script.js" async defer></script>
 </body>
 </html>

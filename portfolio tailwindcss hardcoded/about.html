@@ -33,7 +33,7 @@
                 <li><a href="projects.html" class="nav-item relative flex items-center h-12 px-6 bg-transparent text-neutral-400 border-r border-neutral-800 hover:bg-neutral-800 hover:text-white transition-all duration-200 active:scale-95 group"><span class="text-accent opacity-0 group-hover:opacity-100 transition-all mr-0 group-hover:mr-3 -ml-3 group-hover:ml-0 duration-200">►</span><span>Projects</span></a></li>
                 <li><a href="contact.html" class="nav-item relative flex items-center h-12 px-6 bg-transparent text-neutral-400 hover:bg-neutral-800 hover:text-white transition-all duration-200 active:scale-95 group"><span class="text-accent opacity-0 group-hover:opacity-100 transition-all mr-0 group-hover:mr-3 -ml-3 group-hover:ml-0 duration-200">►</span><span>Contact</span></a></li>
             </ul>
-            <button id="menu-btn" class="md:hidden px-4 text-xl focus:outline-none text-accent active:scale-90 transition-transform relative z-10"><i class="fa-solid fa-terminal" id="menu-icon"></i></button>
+            <button id="menu-btn" class="md:hidden flex items-center gap-2 px-4 py-2.5 rounded-sm font-mono text-xs font-bold uppercase tracking-widest bg-accent/10 border border-accent text-accent focus:outline-none active:scale-90 transition-all duration-200 relative z-10 shadow-[0_0_10px_rgba(180,83,9,0.3)]"><i class="fa-solid fa-terminal" id="menu-icon"></i><span id="menu-label">Menu</span></button>
         </nav>
         <div id="mobile-menu" class="hidden md:hidden mt-2 bg-neutral-950 border border-neutral-700 p-2 rounded-sm shadow-2xl relative overflow-hidden">
             <div class="absolute inset-0 pointer-events-none opacity-20 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:100%_4px]"></div>
@@ -58,7 +58,7 @@
             <div class="md:col-span-3 text-center md:text-left">
                 <p class="font-mono text-xs tracking-[0.3em] uppercase text-accent mb-3">// Identity File</p>
                 <h2 class="text-3xl md:text-4xl font-bold mb-1 tracking-tight text-white font-mono uppercase">Sir Humphrey Huey M. Huet</h2>
-                <p class="text-sm font-mono uppercase tracking-widest text-neutral-500 mb-4">Web Developer · Tarlac, Philippines</p>
+                <p class="text-sm font-mono uppercase tracking-widest text-neutral-500 mb-4"> Web Developer | Software Developer | Game Developer | Game Designer | Data Analyst </p>
                 <p class="text-neutral-400 text-sm leading-relaxed mb-4">
                     Passionate Information Technology professional with a primary focus on web
                     development and a strong interest in software engineering, game development,
@@ -102,17 +102,20 @@
             <div class="relative bg-neutral-950/80 backdrop-blur-md border border-neutral-800 rounded-sm flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-neutral-800 overflow-hidden">
                 <div class="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:100%_4px]"></div>
                 <div class="flex-1 p-4 flex items-center justify-center gap-3 relative z-10">
-                    <i class="fa-solid fa-phone text-accent text-sm"></i>
-                    <span class="font-mono text-xs text-neutral-400 tracking-widest">0948-840-0403</span>
+                    <span class="relative flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent"></span>
+                    </span>
+                    <span class="font-mono text-xs text-neutral-400 tracking-widest">STATUS: OPEN TO WORK</span>
                 </div>
                 <div class="flex-1 p-4 flex items-center justify-center gap-3 relative z-10">
-                    <i class="fa-solid fa-envelope text-accent text-sm"></i>
-                    <span class="font-mono text-xs text-neutral-400 tracking-widest">humphreyhuet26@gmail.com</span>
+                    <i class="fa-solid fa-code text-accent text-sm"></i>
+                    <span class="font-mono text-xs text-neutral-400 tracking-widest">WEB · SOFTWARE · GAME DEV</span>
                 </div>
-                <div class="flex-1 p-4 flex items-center justify-center gap-3 relative z-10">
-                    <i class="fa-solid fa-location-dot text-accent text-sm"></i>
-                    <span class="font-mono text-xs text-neutral-400 tracking-widest">Tarlac, Philippines</span>
-                </div>
+                <a href="contact.html#contact-form" class="flex-1 p-4 flex items-center justify-center gap-3 relative z-10 hover:bg-neutral-900 transition-colors group">
+                    <i class="fa-solid fa-paper-plane text-accent text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                    <span class="font-mono text-xs text-neutral-400 group-hover:text-white tracking-widest transition-colors">SEND SECURE TRANSMISSION</span>
+                </a>
             </div>
         </section>
  
@@ -389,7 +392,7 @@
                 <div>
                     <p class="font-mono text-xs uppercase tracking-widest text-accent mb-4">Connect</p>
                     <ul class="space-y-2 font-mono text-xs uppercase tracking-widest text-neutral-500">
-                        <li class="flex items-center lowercase gap-2"><a href="contact.html#contact-form" class="mail-scroll-trigger flex items-center gap-2 hover:text-white transition-colors"><i class="fa-solid fa-envelope text-accent text-[10px]"></i> humphreyhuet26@gmail.com</a></li>
+                        <li class="flex items-center gap-2"><a href="contact.html#contact-form" class="mail-scroll-trigger flex items-center gap-2 hover:text-white transition-colors"><i class="fa-solid fa-envelope text-accent text-[10px]"></i> EMAIL</a></li>
                         <li class="flex items-center gap-2"><a href="https://github.com/phrey26" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-white transition-colors"><i class="fa-brands fa-github text-accent text-[10px]"></i> GitHub</a></li>
                         <li class="flex items-center gap-2"><a href="https://www.linkedin.com/in/sir-humphrey-huey-huet-89b8993b8/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-white transition-colors"><i class="fa-brands fa-linkedin text-accent text-[10px]"></i> LinkedIn</a></li>
                     </ul>
